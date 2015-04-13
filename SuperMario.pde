@@ -2,7 +2,7 @@ PGraphics regmario;
 float scale;
 
 void setup(){
-  size(screen.width,screen.height);
+  size(window.innerWidth, window.innerHeight);
   imageMode(CENTER,CENTER);
   rectMode(CENTER);
   noStroke();
