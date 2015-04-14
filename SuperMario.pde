@@ -5,8 +5,8 @@ float x;
 float gravity;
 
 void setup(){
-  //size(window.innerWidth, window.innerHeight);
-  size(700,300);
+  size(window.innerWidth, window.innerHeight);
+  //size(700,300);
   imageMode(CENTER,CENTER);
   rectMode(CENTER);
   strokeWeight(4);
@@ -63,9 +63,9 @@ void mousePressed(){
   }
   
   if(mouseX > width*0.75){
-    x++;
+    x+=5;
   }
   else if(mouseX < width*0.25){
-    x--;
+    x-=5;
   }
 }
