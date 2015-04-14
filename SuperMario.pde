@@ -8,8 +8,8 @@ void setup(){
   size(window.innerWidth, window.innerHeight);
   //size(700,300);
   imageMode(CENTER,CENTER);
+  noStroke();
   rectMode(CENTER);
-  strokeWeight(4);
   scale = width*0.05;
   regmario = createGraphics(scale,scale,P2D);
   regmario.beginDraw();
@@ -65,13 +65,10 @@ void mousePressed(){
 }
 
 void controls(){
-  noStroke();
-  fill(40,40,40,50);
-  rect(width/2,height*0.9,width*0.45,height*0.14,10);
-  fill(20,20,20,50);
-  rect(width*0.25,height*0.9,width*0.05,width*0.05,10);
-  rect(width*0.4,height*0.9,width*0.45,height*0.14,10);
-  rect(width/2,height*0.9,width*0.45,height*0.14,10);
-  rect(width*0.6,height*0.9,width*0.45,height*0.14,10);
-  rect(width*0.75,height*0.9,width*0.45,height*0.14,10);
+  fill(255,255,255,40);
+  rect(width*0.2,height*0.9,width*0.01,height*0.2);
+  rect(width*0.4,height*0.9,width*0.01,height*0.2);
+  rect(width*0.6,height*0.9,width*0.01,height*0.2);
+  rect(width*0.8,height*0.9,width*0.01,height*0.2);
+  
 }
