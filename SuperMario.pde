@@ -5,8 +5,8 @@ float x;
 float gravity;
 
 void setup(){
-  size(window.innerWidth, window.innerHeight);
-  //size(700,300);
+  //size(window.innerWidth, window.innerHeight);
+  size(700,300);
   imageMode(CENTER,CENTER);
   rectMode(CENTER);
   strokeWeight(4);
@@ -55,16 +55,17 @@ void draw(){
     gravity = 0;
     y = (height*0.75 - ((height*0.12)/2 + (scale)/2))+3;
   }
-  if(mousePressed){
-    if(mouseX > width*0.75){
-      x++;
-    }
-    else if(mouseX < width*0.25){
-      x--;
-    }
-  }
 }
 
 void mousePressed(){
-  gravity = -10;
+  if(mouseX < width*0.75 && mouseX > width*0.25){
+    gravity = -10;
+  }
+  
+  if(mouseX > width*0.75){
+    x++;
+  }
+  else if(mouseX < width*0.25){
+    x--;
+  }
 }
