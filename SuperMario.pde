@@ -44,7 +44,7 @@ void setup(){
 void draw(){
   background(52, 152, 219);
   fill(20,20,20,50);
-  image(regmario,width*0.4+x,yloc);
+  image(regmario,width*0.4,yloc);
   fill(87,98,110);
   rect(width/2,height*0.75,width,height*0.12);
   fill(0);
@@ -63,35 +63,42 @@ void draw(){
   }
   controls();
   
-  text(yloc,20,40);
+  text(x,20,40);
   fill(139,69,19);
-  rect(width/2,(height*0.75 - ((height*0.12)/2 + (scale)/2)) - height*0.3,scale,scale);
+  rect(width/2+x,(height*0.75 - ((height*0.12)/2 + (scale)/2)) - height*0.3,scale,scale);
   fill(255,222,173);
-  rect(width*0.75,(height*0.75 - ((height*0.12)/2 + (scale)/2)) - height*0.3,scale,scale);
+  rect(width/2+50+x,(height*0.75 - ((height*0.12)/2 + (scale)/2)) - height*0.3,scale,scale);
 }
 
 void mousePressed(){
-    if(mouseX > 0 && mouseX <= width*0.2){
-      x-=30;
+  if(yloc > 0){
+    if(x < 120){
+      if(mouseX > 0 && mouseX <= width*0.2){
+        x+=30;
+      }
+      if(mouseX > width*0.2 && mouseX <= width*0.4){
+        gravity = -10;
+        x+=30;
+      }
+      if(mouseX > width*0.4 && mouseX <= width*0.6){
+        gravity = -10;
+      }
+      if(mouseX > width*0.6 && mouseX <= width*0.8){
+        gravity = -10;
+        x-=30;
+      }
+      if(mouseX > width*0.8 && mouseX <= width){
+        x-=30;
+      }
     }
-    if(mouseX > width*0.2 && mouseX <= width*0.4){
-      gravity = -10;
-      x-=30;
+    else{
+      x = 119;
     }
-    if(mouseX > width*0.4 && mouseX <= width*0.6){
-      gravity = -10;
-    }
-    if(mouseX > width*0.6 && mouseX <= width*0.8){
-      gravity = -10;
-      x+=30;
-    }
-    if(mouseX > width*0.8 && mouseX <= width){
-      x+=30;
-    }
+  }
 }
 
 void controls(){
-  fill(255,255,255,100);
+  fill(255,255,255,130);
   textSize(scale);
   text("←", width*0.1,height*0.95);
   rect(width*0.2,height*0.9,width*0.01,height*0.02);
