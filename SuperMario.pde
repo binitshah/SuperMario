@@ -55,27 +55,19 @@ void draw(){
     gravity = 0;
     y = (height*0.75 - ((height*0.12)/2 + (scale)/2))+3;
   }
+  
+  if(window.pressed){
+    if(window.passVar > width*0.75){
+      x++;
+    }
+    if(window.passVar < width*0.25){
+      x--;
+    }
+  }
 }
 
 void mousePressed(){
   if(mouseX < width*0.75 && mouseX > width*0.25){
     gravity = -10;
-  }
-  
-  if(mouseX > width*0.75){
-    x+=10;
-  }
-  else if(mouseX < width*0.25){
-    x-=10;
-  }
-}
-
-void touchMove(TouchEvent touchEvent) {
- 
-  fill(180, 180, 100);
-  for (int i = 0; i < touchEvent.touches.length; i++) {
-    int x = touchEvent.touches[i].offsetX;
-    int y = touchEvent.touches[i].offsetY;
-    ellipse(x, y, 50, 50);
   }
 }
