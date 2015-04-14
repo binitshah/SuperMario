@@ -66,9 +66,14 @@ void mousePressed(){
 
 void controls(){
   fill(255,255,255,40);
-  rect(width*0.2,height*0.9,width*0.01,height*0.2);
-  rect(width*0.4,height*0.9,width*0.01,height*0.2);
-  rect(width*0.6,height*0.9,width*0.01,height*0.2);
-  rect(width*0.8,height*0.9,width*0.01,height*0.2);
-  
+  textSize(scale);
+  text("←", width*0.1,height*0.9);
+  rect(width*0.2,height*0.9,width*0.01,height*0.02);
+  text("↖", width*0.3,height*0.9);
+  rect(width*0.4,height*0.9,width*0.01,height*0.02);
+  text("↑", width*0.5,height*0.9);
+  rect(width*0.6,height*0.9,width*0.01,height*0.02);
+  text("↗", width*0.7,height*0.9);
+  rect(width*0.8,height*0.9,width*0.01,height*0.02);
+  text("→", width*0.9,height*0.9);
 }
