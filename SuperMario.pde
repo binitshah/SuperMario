@@ -55,19 +55,16 @@ void draw(){
     gravity = 0;
     y = (height*0.75 - ((height*0.12)/2 + (scale)/2))+3;
   }
-  
-  if(window.pressed){
-    if(window.passVar > width*0.75){
-      x++;
-    }
-    if(window.passVar < width*0.25){
-      x--;
-    }
-  }
+  controls();
 }
 
 void mousePressed(){
   if(mouseX < width*0.75 && mouseX > width*0.25){
     gravity = -10;
   }
+}
+
+void controls(){
+  fill(40,40,40,50);
+  rect(width/2,height*0.85,width*0.4,height*0.24,10);
 }
