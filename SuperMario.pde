@@ -58,22 +58,35 @@ void draw(){
   controls();
 }
 
-void mousePressed(){
-  if(mouseX < width*0.75 && mouseX > width*0.25){
-    gravity = -10;
-  }
-}
-
 void controls(){
-  fill(255,255,255,40);
+  fill(255,255,255,70);
   textSize(scale);
-  text("←", width*0.1,height*0.9);
+  text("←", width*0.1,height*0.95);
   rect(width*0.2,height*0.9,width*0.01,height*0.02);
-  text("↖", width*0.3,height*0.9);
+  text("↖", width*0.3,height*0.95);
   rect(width*0.4,height*0.9,width*0.01,height*0.02);
-  text("↑", width*0.5,height*0.9);
+  text("↑", width*0.5,height*0.95);
   rect(width*0.6,height*0.9,width*0.01,height*0.02);
-  text("↗", width*0.7,height*0.9);
+  text("↗", width*0.7,height*0.95);
   rect(width*0.8,height*0.9,width*0.01,height*0.02);
-  text("→", width*0.9,height*0.9);
+  text("→", width*0.9,height*0.95);
+  if(mousePressed){
+    if(mouseX > 0 && mouseX <= width*0.2){
+      x-=10;
+    }
+    if(mouseX > width*0.2 && mouseX <= width*0.4){
+      gravity = -10;
+      x-=10;
+    }
+    if(mouseX > width*0.4 && mouseX <= width*0.6){
+      gravity = -10;
+    }
+    if(mouseX > width*0.6 && mouseX <= width*0.8){
+      gravity = -10;
+      x+=10;
+    }
+    if(mouseX > width*0.8 && mouseX <= width){
+      x+=10;
+    }
+  }
 }
