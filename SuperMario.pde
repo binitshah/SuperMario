@@ -63,9 +63,19 @@ void mousePressed(){
   }
   
   if(mouseX > width*0.75){
-    x+=5;
+    x+=10;
   }
   else if(mouseX < width*0.25){
-    x-=5;
+    x-=10;
+  }
+}
+
+void touchMove(TouchEvent touchEvent) {
+ 
+  fill(180, 180, 100);
+  for (int i = 0; i < touchEvent.touches.length; i++) {
+    int x = touchEvent.touches[i].offsetX;
+    int y = touchEvent.touches[i].offsetY;
+    ellipse(x, y, 50, 50);
   }
 }
