@@ -65,6 +65,7 @@ void mousePressed(){
 }
 
 void controls(){
+noStroke();
   fill(40,40,40,50);
-  rect(width/2,height*0.85,width*0.4,height*0.24,10);
+  rect(width/2,height*0.75+(height*0.12)/2,width*0.25,height*0.24,10);
 }
