@@ -4,10 +4,11 @@ float yloc;
 float x;
 float y;
 float gravity;
+float ground;
 
 void setup(){
-  size(window.innerWidth, window.innerHeight);
-  //size(700,300);
+  //size(window.innerWidth, window.innerHeight);
+  size(700,300);
   imageMode(CENTER,CENTER);
   noStroke();
   rectMode(CENTER);
@@ -39,6 +40,7 @@ void setup(){
   x = 0;
   y = 0;
   gravity = -2;
+  ground = (height*0.75 - ((height*0.12)/2 + (scale)/2))+3;
 }
 
 void draw(){
@@ -53,13 +55,16 @@ void draw(){
   rectMode(CENTER);
   
   yloc+=gravity;
-  
-  if(yloc < (height*0.75 - ((height*0.12)/2 + (scale)/2))+3){
+  if(width*0.4 > (width/2 + x) - scale/2 && width*0.4 < (width/2 + x) + scale/2){
+    //if(yloc 
+  }
+  //ground
+  if(yloc < ground){
     gravity+=0.75;
   }
   else{
     gravity = 0;
-    yloc = (height*0.75 - ((height*0.12)/2 + (scale)/2))+3;
+    yloc = ground;
   }
   controls();
   
