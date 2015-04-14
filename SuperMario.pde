@@ -1,7 +1,8 @@
 PGraphics regmario;
 float scale;
-float y;
+float yloc;
 float x;
+float y;
 float gravity;
 
 void setup(){
@@ -34,28 +35,39 @@ void setup(){
   regmario.point((scale)/2+scale*0.06,(scale)/2-scale*0.31);
   regmario.point((scale)/2-scale*0.03,(scale)/2-scale*0.305);
   regmario.endDraw();
-  y = 0;
+  yloc = 0;
   x = 0;
+  y = 0;
   gravity = -2;
 }
 
 void draw(){
   background(52, 152, 219);
   fill(20,20,20,50);
-  image(regmario,width*0.4+x,y);
+  image(regmario,width*0.4+x,yloc);
   fill(87,98,110);
   rect(width/2,height*0.75,width,height*0.12);
+  fill(0);
+  rectMode(CORNER);
+  rect(0,height*0.75+(height*0.12)/2,width,height);
+  rectMode(CENTER);
   
-  y+=gravity;
+  yloc+=gravity;
   
-  if(y < (height*0.75 - ((height*0.12)/2 + (scale)/2))+3){
+  if(yloc < (height*0.75 - ((height*0.12)/2 + (scale)/2))+3){
     gravity+=0.75;
   }
   else{
     gravity = 0;
-    y = (height*0.75 - ((height*0.12)/2 + (scale)/2))+3;
+    yloc = (height*0.75 - ((height*0.12)/2 + (scale)/2))+3;
   }
   controls();
+  
+  text(yloc,20,40);
+  fill(139,69,19);
+  rect(width/2,(height*0.75 - ((height*0.12)/2 + (scale)/2)) - height*0.3,scale,scale);
+  fill(255,222,173);
+  rect(width*0.75,(height*0.75 - ((height*0.12)/2 + (scale)/2)) - height*0.3,scale,scale);
 }
 
 void mousePressed(){
