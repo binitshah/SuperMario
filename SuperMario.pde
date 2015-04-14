@@ -1,11 +1,15 @@
 PGraphics regmario;
 float scale;
+float y;
+float x;
+float gravity;
 
 void setup(){
   size(window.innerWidth, window.innerHeight);
+  //size(700,300);
   imageMode(CENTER,CENTER);
   rectMode(CENTER);
-  noStroke();
+  strokeWeight(4);
   scale = width*0.05;
   regmario = createGraphics(scale,scale,P2D);
   regmario.beginDraw();
@@ -30,10 +34,37 @@ void setup(){
   regmario.point((scale)/2+scale*0.06,(scale)/2-scale*0.31);
   regmario.point((scale)/2-scale*0.03,(scale)/2-scale*0.305);
   regmario.endDraw();
+  y = 0;
+  x = 0;
+  gravity = -2;
 }
 
 void draw(){
   background(52, 152, 219);
   fill(20,20,20,50);
-  image(regmario, mouseX,mouseY);
+  image(regmario,width*0.4+x,y);
+  fill(87,98,110);
+  rect(width/2,height*0.75,width,height*0.12);
+  
+  y+=gravity;
+  
+  if(y < (height*0.75 - ((height*0.12)/2 + (scale)/2))+3){
+    gravity+=0.75;
+  }
+  else{
+    gravity = 0;
+    y = (height*0.75 - ((height*0.12)/2 + (scale)/2))+3;
+  }
+  if(mousePressed){
+    if(mouseX > width*0.75){
+      x++;
+    }
+    else if(mouseX < width*0.25){
+      x--;
+    }
+  }
+}
+
+void mousePressed(){
+  gravity = -10;
 }
