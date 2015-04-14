@@ -22,6 +22,36 @@
 		<script type="text/javascript">
 // convenience function to get the id attribute of generated sketch html element
 function getProcessingSketchId () { return 'SuperMario'; }
+
+window.passVar = 0;
+window.pressed = false;
+
+$(document).mousedown(function(e){
+    passVar = e.pageX;
+    pressed = true;
+});
+
+$(document).mouseup(function(e){
+    pressed = false;
+});
+
+var scripts=document.getElementsByTagName("script");
+for(var i=0;i<scripts.length;i++) {
+    if(scripts[i].type=="application/processing"){
+        var src=scripts[i].src,canvas=scripts[i].nextSibling;
+        if(src&&src.indexOf("#")){
+           canvas=document.getElementById(src.substr(src.indexOf("#")+1));
+        }else{
+            while(canvas&&canvas.nodeName.toUpperCase()!="CANVAS")
+                canvas=canvas.nextSibling;
+        }
+        if(canvas){
+            new Processing(canvas,scripts[i].text);
+            
+        }
+    }
+}
+
 </script>
 
 	</head>
