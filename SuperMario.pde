@@ -5,10 +5,11 @@ float x;
 float y;
 float gravity;
 float ground;
+float roof;
 
 void setup(){
-  //size(window.innerWidth, window.innerHeight);
-  size(700,300);
+  size(window.innerWidth, window.innerHeight);
+  //size(700,300);
   imageMode(CENTER,CENTER);
   noStroke();
   rectMode(CENTER);
@@ -40,7 +41,8 @@ void setup(){
   x = 0;
   y = 0;
   gravity = -2;
-  ground = (height*0.75 - ((height*0.12)/2 + (scale)/2))+3;
+  ground = (height*0.75 - ((height*0.12)/2 + (scale)/2))+5;
+  roof = scale/2;
 }
 
 void draw(){
@@ -55,9 +57,32 @@ void draw(){
   rectMode(CENTER);
   
   yloc+=gravity;
-  if(width*0.4 > (width/2 + x) - scale/2 && width*0.4 < (width/2 + x) + scale/2){
-    //if(yloc 
+  //block1
+  if(width*0.4 > (width/2 + x) - scale && width*0.4 < (width/2 + x) + scale){
+    if(yloc <= height*0.33-scale*0.25){
+      roof = scale/2;
+      ground = height*0.33-scale*0.83;
+    }
+    else{
+      roof = height*0.33 + scale;
+      ground = (height*0.75 - ((height*0.12)/2 + (scale)/2))+5;
+    }
   }
+  else if(width*0.4 > (width/2+scale+30+x) - scale && width*0.4 < (width/2 +scale+ 30+x) + scale){
+    if(yloc <= height*0.33-scale*0.25){
+      roof = scale/2;
+      ground = height*0.33-scale*0.83;
+    }
+    else{
+      roof = height*0.33 + scale;
+      ground = (height*0.75 - ((height*0.12)/2 + (scale)/2))+5;
+    }
+  }
+  else{
+    roof = scale/2;
+    ground = (height*0.75 - ((height*0.12)/2 + (scale)/2))+5;
+  }
+ 
   //ground
   if(yloc < ground){
     gravity+=0.75;
@@ -66,39 +91,43 @@ void draw(){
     gravity = 0;
     yloc = ground;
   }
+  //roof
+  if(yloc < roof){
+    gravity = 0;
+    yloc = roof;
+  }
   controls();
   
-  text(x,20,40);
+  text(height*0.33-scale*0.5,20,40);
+  text(mouseY,20,60);
   fill(139,69,19);
-  rect(width/2+x,(height*0.75 - ((height*0.12)/2 + (scale)/2)) - height*0.3,scale,scale);
+  rect(width/2+x,height*0.33,scale,scale);
   fill(255,222,173);
-  rect(width/2+50+x,(height*0.75 - ((height*0.12)/2 + (scale)/2)) - height*0.3,scale,scale);
+  rect(width/2+scale+30+x,height*0.33,scale,scale);
 }
 
 void mousePressed(){
-  if(yloc > 0){
-    if(x < 120){
-      if(mouseX > 0 && mouseX <= width*0.2){
-        x+=30;
-      }
-      if(mouseX > width*0.2 && mouseX <= width*0.4){
-        gravity = -10;
-        x+=30;
-      }
-      if(mouseX > width*0.4 && mouseX <= width*0.6){
-        gravity = -10;
-      }
-      if(mouseX > width*0.6 && mouseX <= width*0.8){
-        gravity = -10;
-        x-=30;
-      }
-      if(mouseX > width*0.8 && mouseX <= width){
-        x-=30;
-      }
+  if(x < 120){
+    if(mouseX > 0 && mouseX <= width*0.2){
+      x+=30;
     }
-    else{
-      x = 119;
+    if(mouseX > width*0.2 && mouseX <= width*0.4){
+      gravity = -10;
+      x+=30;
     }
+    if(mouseX > width*0.4 && mouseX <= width*0.6){
+      gravity = -10;
+    }
+    if(mouseX > width*0.6 && mouseX <= width*0.8){
+      gravity = -10;
+      x-=30;
+    }
+    if(mouseX > width*0.8 && mouseX <= width){
+      x-=30;
+    }
+  }
+  else{
+    x = 119;
   }
 }
 
