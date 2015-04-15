@@ -98,8 +98,6 @@ void draw(){
   }
   controls();
   
-  text(height*0.33-scale*0.5,20,40);
-  text(mouseY,20,60);
   fill(139,69,19);
   rect(width/2+x,height*0.33,scale,scale);
   fill(255,222,173);
