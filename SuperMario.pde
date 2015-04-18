@@ -111,7 +111,7 @@ void draw(){
     textSize(40);
     text("PLAY", width*0.65, height*0.35 + 243 + y);
     textSize(15);
-    text("Carson: Sorry this isn't on the calculator and not completely finished. Don't be too much of an ass about it. - Binit Shah", width*0.5, height*0.65 + 243 + y, width*0.5,height*0.5);
+    text("Hey. Sorry about this, but this game is incomplete. My fickle attention is currently working on a different project. If something about this rough sketch managed to catch your eye, feel free to borrow the code from the github repository. Now, promo time. Website: myseva.org - Binit Shah", width*0.5, height*0.65 + 243 + y, width*0.5,height*0.5);
   }
   else if(mode == "transition2play"){
     y+=2;
